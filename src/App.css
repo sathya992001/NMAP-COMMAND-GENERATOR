@@ -1,0 +1,93 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #f8f9fa00; /* light transparent background */
+  overflow: hidden; /* Ensure circles aren't clipped */
+}
+
+/* Container for additional circles */
+.circle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none; /* Prevent interaction with the container */
+}
+
+/* Large blurred color circles */
+.App::before,
+.App::after,
+.circle-container::before,
+.circle-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Top-left pastel circle */
+.App::before {
+  width: 500px;
+  height: 500px;
+  background: #a5d8ff; /* pastel blue */
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+/* Bottom-right pastel circle */
+.App::after {
+  width: 600px;
+  height: 600px;
+  background: #f5c2e7; /* pastel orange */
+  bottom: -250px;
+  right: -250px;
+  animation-delay: 10s;
+}
+
+/* Top-right pastel circle */
+.circle-container::before {
+  width: 450px;
+  height: 450px;
+  background: #c3e4c3; /* pastel green */
+  top: -180px;
+  right: -180px;
+  animation-delay: 5s;
+}
+
+/* Bottom-left pastel circle */
+.circle-container::after {
+  width: 550px;
+  height: 550px;
+  background: #ffd6a5; /* pastel pink */
+  bottom: -220px;
+  left: -220px;
+  animation-delay: 15s;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px) translateX(0px) scale(1); }
+  50%  { transform: translateY(-80px) translateX(80px) scale(1.05); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+/* Faster animation for all circles */
+.App::before,
+.App::after,
+.circle-container::before,
+.circle-container::after {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Ensure content is above circles */
+.App > * {
+  position: relative;
+  z-index: 1;
+}
