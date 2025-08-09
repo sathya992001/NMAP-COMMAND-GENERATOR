@@ -1,12 +1,12 @@
 import { FaGithub } from 'react-icons/fa';
 import '../assets/fonts/Agustina.woff';
-import '../styles/Header.css'; // Make sure you're importing your CSS file
+import '../styles/Header.css';
 
 const Header = () => {
   return (
     <header className="header glass-header">
       <div className="header-left">
-        <h1 className="logo">Nmap Augur</h1> {/* Added logo class here */}
+        <h1 className="logo">Network Insight</h1>
       </div>
 
       <a

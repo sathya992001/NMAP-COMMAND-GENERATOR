@@ -4,7 +4,7 @@
   margin: 20px auto;
   padding: 25px;
   border-radius: 14px;
-  background: linear-gradient(145deg, #ffffff, #f6f8fb);
+  background: linear-gradient(145deg, #ffffff40, #f6f8fb55);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

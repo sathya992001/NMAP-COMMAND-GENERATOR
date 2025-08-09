@@ -53,7 +53,7 @@ To run the NMAP Command Generator locally:
 - **Deployment**: Vercel
 
 ## Project Structure
-```
+```bash
 NMAP-COMMAND-GENERATOR/
 ├── src/
 │   ├── components/

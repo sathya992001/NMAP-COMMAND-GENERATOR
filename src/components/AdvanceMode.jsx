@@ -94,11 +94,22 @@ const AdvanceMode = () => {
     }
 
     // Output Format
-    if (outputFormat === 'oN') cmd += ` -oN ${outputName || 'output.nmap'}`
-    else if (outputFormat === 'oX') cmd += ` -oX ${outputName || 'output.xml'}`
-    else if (outputFormat === 'oS') cmd += ` -oS ${outputName || 'output.script'}`
-    else if (outputFormat === 'oG') cmd += ` -oG ${outputName || 'output.grep'}`
-    else if (outputFormat === 'oA') cmd += ` -oA ${outputName || 'output'}`
+    if (outputFormat === 'oN'){
+      cmd += ` -oN ${outputName || 'output.nmap'}`
+    }
+    else if (outputFormat === 'oX') {
+      cmd += ` -oX ${outputName || 'output.xml'}`
+    }
+
+    else if (outputFormat === 'oS'){
+      cmd += ` -oS ${outputName || 'output.script'}`
+    }
+    else if (outputFormat === 'oG') {
+      cmd += ` -oG ${outputName || 'output.grep'}`
+    }
+    else if (outputFormat === 'oA') {
+      cmd += ` -oA ${outputName || 'output'}`
+    }
 
     // Target IP
     cmd += ` ${ip || '<IP>'}`
@@ -140,7 +151,7 @@ const AdvanceMode = () => {
 
   return (
     <>
-      <h3>Advance Mode</h3>
+      <h3>Advance Scan Commands</h3>
       <div className="center">
         <div className="container text-start">
           <div className="row">
