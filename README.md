@@ -109,8 +109,17 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Author
-Created by Abdul Ahad, 2025.
+## Credits
+
+- [x] **Author**: Abdul Ahad
+- [x] **Icons**: [Flaticon](https://www.flaticon.com/free-icons/) (Icons by Flaticon)
+- [x] **Images**: [Storyset](https://storyset.com/technology)
+
+---
+
+## Contact
+
+For questions or feedback, reach out via [GitHub Issues](https://github.com/AbdulAHAD968/What-GPA/issues) or connect on [LinkedIn](https://www.linkedin.com/in/abdulahad-zarinc/).
 
 ---
 
