@@ -70,24 +70,32 @@ To run the NMAP Command Generator locally:
 
 ## Project Structure
 ```bash
-NMAP-COMMAND-GENERATOR/
-├── src/
-│   ├── components/
-│   │   ├── IpInput.js       # IP address input field
-│   │   ├── Tabs.js          # Interface for Basic, Advanced, NSE modes
-│   ├── contexts/
-│   │   ├── IpContext.js     # Manages IP input state
-│   ├── styles/
-│   │   ├── App.css          # Core application styles
-│   │   ├── SimpleMode.css   # Basic mode styles
-│   │   ├── AdvanceMode.css  # Advanced mode styles
-│   │   ├── NSEmode.css      # NSE mode styles
-│   │   ├── ip-input.css     # IP input styles
-│   ├── App.js               # Main application component
-├── public/
-│   ├── index.html           # HTML entry point
-├── package.json             # Dependencies and scripts
-├── README.md                # Project documentation
+abdulahad968-nmap-command-generator/
+    ├── README.md
+    ├── eslint.config.js
+    ├── index.html
+    ├── LICENSE
+    ├── package.json
+    ├── vite.config.js
+    └── src/
+        ├── App.css
+        ├── App.jsx
+        ├── index.css
+        ├── main.jsx
+        ├── components/
+        │   ├── AdvanceMode.jsx
+        │   ├── Footer.jsx
+        │   ├── Header.jsx
+        │   ├── IpInput.jsx
+        │   ├── NotFound.jsx
+        │   ├── NSEmode.jsx
+        │   ├── SimpleMode.jsx
+        │   └── Tabs.jsx
+        ├── contexts/
+        │   └── IpContext.jsx
+        └── styles/
+            ├── AdvanceMode.css
+            ├── .....
 ```
 
 ---
