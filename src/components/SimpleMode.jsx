@@ -33,6 +33,7 @@ const CommandCard = ({ command, onCopy }) => {
 const SimpleMode = () => {
   const { ip } = useIp();
   const [copiedIndex, setCopiedIndex] = useState(null);
+  const [notification, setNotification] = useState("");
 
   const commands = [
     {
@@ -86,9 +87,15 @@ const SimpleMode = () => {
   ];
 
   const copyToClipboard = (text, index) => {
-    navigator.clipboard.writeText(text);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedIndex(index);
+      setNotification("Copied to clipboard!");
+
+      setTimeout(() => {
+        setCopiedIndex(null);
+        setNotification("");
+      }, 2000);
+    });
   };
 
   return (
@@ -126,6 +133,25 @@ const SimpleMode = () => {
           </ul>
         </div>
       </div>
+
+      {notification && (
+        <div style={{
+          position: "fixed",
+          top: "20px",
+          right: "20px",
+          background: "#30d680ff",
+          color: "#ffffffff",
+          padding: "10px 15px",
+          borderRadius: "8px",
+          boxShadow: "0 0 10px rgba(83, 255, 112, 0.67)",
+          fontWeight: "bold",
+          zIndex: 9999,
+          transition: "opacity 0.3s ease"
+        }}>
+          {notification}
+        </div>
+      )}
+
     </div>
   );
 };
