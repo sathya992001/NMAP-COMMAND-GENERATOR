@@ -1,32 +1,87 @@
 import { useState } from 'react';
 import { FaCopy, FaInfoCircle } from 'react-icons/fa';
+import { createPortal } from 'react-dom';
 import { useIp } from '../contexts/IpContext';
 import '../styles/SimpleMode.css';
 
+// Tooltip component rendered via portal
+const Tooltip = ({ text, position }) => {
+  if (!position) return null;
+
+  return createPortal(
+    <div
+      className="tooltip-portal"
+      style={{
+        top: position.top,
+        left: position.left
+      }}
+    >
+      {text}
+    </div>,
+    document.body
+  );
+};
+
 const CommandCard = ({ command, onCopy }) => {
+  const [tooltipPos, setTooltipPos] = useState(null);
+
+  const showTooltip = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const tooltipHeight = 50; // estimated height in px
+    const verticalOffset = 10; // distance from icon
+
+    let top, left;
+
+    // Check if enough space above, else show below
+    if (rect.top > tooltipHeight + verticalOffset) {
+      top = rect.top - tooltipHeight - verticalOffset + window.scrollY;
+    } else {
+      top = rect.bottom + verticalOffset + window.scrollY;
+    }
+
+    // Horizontal center
+    left = rect.left + rect.width / 2;
+
+    // Clamp left/right to viewport width
+    const viewportWidth = window.innerWidth;
+    const maxLeft = viewportWidth - 100; // leave padding
+    const minLeft = 100;
+    if (left > maxLeft) left = maxLeft;
+    if (left < minLeft) left = minLeft;
+
+    setTooltipPos({ top, left });
+  };
+
+  const hideTooltip = () => setTooltipPos(null);
 
   return (
-    <div 
-      className="command-card"
-    >
-      <div className="command-header">
-        <h4>{command.label}</h4>
-        <div className="tooltip">
-          <FaInfoCircle className="info-icon" />
-          <span className="tooltiptext">{command.explanation}</span>
+    <>
+      <div className="command-card">
+        <div className="command-header">
+          <h4>{command.label}</h4>
+          <span
+            onMouseEnter={showTooltip}
+            onMouseLeave={hideTooltip}
+            style={{ position: 'relative' }}
+          >
+            <FaInfoCircle className="info-icon" />
+          </span>
+        </div>
+        <div className="command-body">
+          <code>{command.getCommand()}</code>
+          <button
+            className="copy-button"
+            onClick={() => onCopy(command.getCommand())}
+            aria-label="Copy command"
+          >
+            <FaCopy />
+          </button>
         </div>
       </div>
-      <div className="command-body">
-        <code>{command.getCommand()}</code>
-        <button 
-          className="copy-button" 
-          onClick={() => onCopy(command.getCommand())}
-          aria-label="Copy command"
-        >
-          <FaCopy />
-        </button>
-      </div>
-    </div>
+
+      {/* Render tooltip outside the card */}
+      <Tooltip text={command.explanation} position={tooltipPos} />
+    </>
   );
 };
 
@@ -151,7 +206,6 @@ const SimpleMode = () => {
           {notification}
         </div>
       )}
-
     </div>
   );
 };

@@ -140,7 +140,7 @@
   border-radius: 6px;
   padding: 0.5rem;
   position: absolute;
-  z-index: 1;
+  z-index: 1000;
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
@@ -180,6 +180,31 @@
   margin-bottom: 0.5rem;
   line-height: 1.4;
 }
+
+.tooltip-portal {
+  position: absolute;
+  transform: translateX(-50%);
+  background-color: #3c4043;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+  white-space: normal;
+  max-width: 200px;
+  z-index: 10000;
+  pointer-events: none;
+  word-break: break-word;
+}
+
+@media (max-width: 500px) {
+  .tooltip-portal {
+    max-width: 150px;
+    font-size: 0.75rem;
+  }
+}
+
 
 /* Responsive adjustments for tablets (580px and up) */
 @media (min-width: 580px) {
